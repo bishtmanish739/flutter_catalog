@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/screen/homepage.dart';
 import 'package:flutter_catalog/screen/login_screen.dart';
+import 'package:flutter_catalog/screen/ragister.dart';
 import 'screen/homepage.dart';
 
 void main() {
@@ -15,11 +16,12 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: '/loginPage',
+      initialRoute: '/ragisterPage',
       routes: {
         "/homePage": (context) => HomePage(),
         "/": (context) => HomePage(),
-        "/loginPage": (context) => Loginpage()
+        "/loginPage": (context) => Loginpage(),
+        "/ragisterPage": (context) => RagisterPage()
       },
       //home: HomePage(),
     );
