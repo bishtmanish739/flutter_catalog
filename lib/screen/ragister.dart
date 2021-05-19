@@ -74,7 +74,10 @@ class _RagisterPageState extends State<RagisterPage> {
                   changebutton = true;
                 });
                 await Future.delayed(Duration(seconds: 1));
-                Navigator.pushNamed(context, MyRouts.homeRouts);
+                await Navigator.pushNamed(context, MyRouts.homeRouts);
+                setState(() {
+                  changebutton = false;
+                });
               },
               child: AnimatedContainer(
                 duration: Duration(seconds: 1),
