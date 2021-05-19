@@ -3,7 +3,7 @@ import 'package:flutter_catalog/widgets/mydrawer.dart';
 
 class HomePage extends StatelessWidget {
   @override
-  int days = 9;
+  int days = 10;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

@@ -3,6 +3,7 @@ import 'package:flutter_catalog/screen/homepage.dart';
 import 'package:flutter_catalog/screen/login_screen.dart';
 import 'package:flutter_catalog/screen/ragister.dart';
 import 'package:flutter_catalog/utils/routs.dart';
+import 'package:flutter_catalog/widgets/theme.dart';
 import 'screen/homepage.dart';
 
 void main() {
@@ -14,9 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.light,
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
+      theme: Mytheme.lightTheme(context),
+      darkTheme: Mytheme.darTheme(context),
       debugShowCheckedModeBanner: false,
       initialRoute: MyRouts.homeRouts,
       routes: {
