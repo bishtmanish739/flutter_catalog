@@ -1,13 +1,16 @@
-import 'package:flutter/material.dart';
+import 'dart:html';
 
-class Loginpage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_catalog/utils/routes.dart';
+
+class RagisterPage extends StatelessWidget {
   @override
   int days = 4;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Login',
+          'Ragister',
           style: TextStyle(fontSize: 20),
         ),
       ),
@@ -22,7 +25,7 @@ class Loginpage extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             Text(
-              'Welcome to Login Screeen ',
+              'Welcome to Ragister Screeen ',
               style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
@@ -41,6 +44,12 @@ class Loginpage extends StatelessWidget {
                     decoration: InputDecoration(
                         hintText: 'password ',
                         labelText: 'Enter Your password '),
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        hintText: 'Confirm Password ',
+                        labelText: 'Confirm Password'),
                   )
                 ],
               ),
@@ -50,9 +59,9 @@ class Loginpage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  print('hello ');
+                  Navigator.pushNamed(context, MyRoutes.homeRouts);
                 },
-                child: Text('Login'))
+                child: Text('Register'))
           ],
         ),
       ),
