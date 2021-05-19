@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_catalog/screen/homepage.dart';
 import 'package:flutter_catalog/screen/login_screen.dart';
 import 'package:flutter_catalog/screen/ragister.dart';
+import 'package:flutter_catalog/utils/routs.dart';
 import 'screen/homepage.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/ragisterPage',
       routes: {
-        "/homePage": (context) => HomePage(),
+        MyRouts.homeRouts: (context) => HomePage(),
         "/": (context) => HomePage(),
         "/loginPage": (context) => Loginpage(),
         "/ragisterPage": (context) => RagisterPage()
