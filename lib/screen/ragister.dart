@@ -22,6 +22,7 @@ class _RagisterPageState extends State<RagisterPage> {
       await Navigator.pushNamed(context, MyRouts.homeRouts);
       setState(() {
         changebutton = false;
+        email = "";
       });
     }
   }
