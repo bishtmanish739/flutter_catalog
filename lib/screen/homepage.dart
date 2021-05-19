@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   @override
-  int days = 5;
+  int days = 6;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
