@@ -17,12 +17,13 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: '/ragisterPage',
+      debugShowCheckedModeBanner: false,
+      initialRoute: MyRouts.homeRouts,
       routes: {
         MyRouts.homeRouts: (context) => HomePage(),
         "/": (context) => HomePage(),
-        "/loginPage": (context) => Loginpage(),
-        "/ragisterPage": (context) => RagisterPage()
+        MyRouts.loginRouts: (context) => Loginpage(),
+        MyRouts.ragisterRouts: (context) => RagisterPage()
       },
       //home: HomePage(),
     );
