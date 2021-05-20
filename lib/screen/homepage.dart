@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int days = 15;
+  int days = 17;
 
   //final dummylist = List.generate(50, (index) => CatalogModel.item[0]);
   @override
@@ -38,37 +38,67 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Welcome to day $days'),
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: [
+              CatalogHeader(),
+              if (CatalogModel.item != null && CatalogModel.item.isNotEmpty)
+                CatalogList()
+              else
+                Center(
+                  child: CircularProgressIndicator(),
+                ),
+            ],
+          ),
+        ),
       ),
-      drawer: MyDrawer(),
-      body: (CatalogModel.item != null && CatalogModel.item.isNotEmpty)
-          ? GridView.builder(
-              itemCount: CatalogModel.item.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 10),
-              itemBuilder: (context, index) {
-                final item = CatalogModel.item[index];
-                return Card(
-                    clipBehavior: Clip.antiAlias,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    child: GridTile(
-                      header: Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(color: Colors.white),
-                          child: Text(item.name)),
-                      child: Image.network(item.image),
-                      footer: Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(color: Colors.white),
-                          child: Text('\$' + item.price.toString())),
-                    ));
-              },
-            )
-          : Center(
-              child: CircularProgressIndicator(),
-            ),
+    );
+  }
+}
+
+class CatalogList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: CatalogModel.item.length,
+      itemBuilder: (context, index) {
+        final catalog = CatalogModel.item[index];
+        return CatalogItem(catalog: catalog);
+      },
+    );
+  }
+}
+
+class CatalogItem extends StatelessWidget {
+  final Item catalog;
+
+  const CatalogItem({Key key, @required this.catalog})
+      : assert(catalog != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.lightBlue,
+      ),
+    );
+  }
+}
+
+class CatalogHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text(
+          "Catalog App",
+          style: TextStyle(
+            fontSize: 30,
+          ),
+        ),
+      ),
     );
   }
 }
