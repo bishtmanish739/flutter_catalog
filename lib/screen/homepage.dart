@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int days = 13;
+  int days = 15;
 
   //final dummylist = List.generate(50, (index) => CatalogModel.item[0]);
   @override
@@ -43,10 +43,27 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: MyDrawer(),
       body: (CatalogModel.item != null && CatalogModel.item.isNotEmpty)
-          ? ListView.builder(
+          ? GridView.builder(
               itemCount: CatalogModel.item.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 10),
               itemBuilder: (context, index) {
-                return ItemWidged(item: CatalogModel.item[index]);
+                final item = CatalogModel.item[index];
+                return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    child: GridTile(
+                      header: Container(
+                          padding: const EdgeInsets.all(15),
+                          decoration: BoxDecoration(color: Colors.white),
+                          child: Text(item.name)),
+                      child: Image.network(item.image),
+                      footer: Container(
+                          padding: const EdgeInsets.all(15),
+                          decoration: BoxDecoration(color: Colors.white),
+                          child: Text('\$' + item.price.toString())),
+                    ));
               },
             )
           : Center(
