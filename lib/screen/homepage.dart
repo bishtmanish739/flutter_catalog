@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int days = 13;
 
-  final dummylist = List.generate(50, (index) => CatalogModel.item[0]);
+  //final dummylist = List.generate(50, (index) => CatalogModel.item[0]);
   @override
   void initState() {
     // TODO: implement initState
@@ -22,12 +22,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
+    await Future.delayed(Duration(seconds: 2));
     var catalogJson = await rootBundle.loadString("assets/files/catalog.json");
     //print(catalogJson);
     var decodedata = jsonDecode(catalogJson);
     //print(decodedata);
     final productdata = decodedata['products'];
-    //  print(productdata);
+    CatalogModel.item =
+        List.from(productdata).map<Item>((item) => Item.fromMap(item)).toList();
+
+    setState(() {});
+    //print(productdata);
   }
 
   @override
@@ -37,12 +42,16 @@ class _HomePageState extends State<HomePage> {
         title: Text('Welcome to day $days'),
       ),
       drawer: MyDrawer(),
-      body: ListView.builder(
-        itemCount: dummylist.length,
-        itemBuilder: (context, index) {
-          return ItemWidged(item: dummylist[index]);
-        },
-      ),
+      body: (CatalogModel.item != null && CatalogModel.item.isNotEmpty)
+          ? ListView.builder(
+              itemCount: CatalogModel.item.length,
+              itemBuilder: (context, index) {
+                return ItemWidged(item: CatalogModel.item[index]);
+              },
+            )
+          : Center(
+              child: CircularProgressIndicator(),
+            ),
     );
   }
 }
