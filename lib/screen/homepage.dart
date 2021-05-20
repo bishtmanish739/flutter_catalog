@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     var decodedata = jsonDecode(catalogJson);
     //print(decodedata);
     final productdata = decodedata['products'];
-    // print(productdata);
+    //  print(productdata);
   }
 
   @override
