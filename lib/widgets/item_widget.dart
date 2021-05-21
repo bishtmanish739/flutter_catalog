@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 
-class ItemWidged extends StatelessWidget {
+class ItemWidget extends StatelessWidget {
   final Item item;
 
-  const ItemWidged({Key key, @required this.item})
+  const ItemWidget({Key key, @required this.item})
       : assert(item != null),
         super(key: key);
 
@@ -12,11 +12,20 @@ class ItemWidged extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        onTap: () {
+          print("${item.name} pressed");
+        },
         leading: Image.network(item.image),
-        subtitle: Text(item.desc),
         title: Text(item.name),
-        trailing: Text("\$${item.price}"),
-        onTap: () {},
+        subtitle: Text(item.desc),
+        trailing: Text(
+          "\$${item.price}",
+          textScaleFactor: 1.5,
+          style: TextStyle(
+            color: Colors.deepPurple,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

@@ -6,6 +6,10 @@ class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
       primarySwatch: Colors.deepPurple,
       fontFamily: GoogleFonts.poppins().fontFamily,
+      cardColor: Colors.white,
+      canvasColor: creamColor,
+      buttonColor: darkBluishColor,
+      accentColor: darkBluishColor,
       appBarTheme: AppBarTheme(
         color: Colors.white,
         elevation: 0.0,
