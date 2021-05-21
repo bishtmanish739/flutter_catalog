@@ -6,7 +6,6 @@ import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/utils/routs.dart';
 import 'package:flutter_catalog/widgets/homewidget/catalog_header.dart';
 import 'package:flutter_catalog/widgets/homewidget/catalog_list.dart';
-import 'package:flutter_catalog/widgets/mydrawer.dart';
 import 'package:flutter_catalog/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
