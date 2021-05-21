@@ -1,6 +1,6 @@
 class CatalogModel {
   static List<Item> item;
-  static Item getById(int id) =>
+  Item getById(int id) =>
       item.firstWhere((element) => element.id == id, orElse: null);
 
   // Get Item by position
