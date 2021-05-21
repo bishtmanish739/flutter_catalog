@@ -7,6 +7,7 @@ import 'package:flutter_catalog/utils/routs.dart';
 import 'package:flutter_catalog/widgets/homewidget/catalog_header.dart';
 import 'package:flutter_catalog/widgets/homewidget/catalog_list.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   final int days = 30;
 
   final String name = "Codepur";
+  final url = "https://api.jsonbin.io/b/604dbddb683e7e079c4eefd3";
 
   @override
   void initState() {
@@ -26,8 +28,10 @@ class _HomePageState extends State<HomePage> {
 
   loadData() async {
     await Future.delayed(Duration(seconds: 2));
-    final catalogJson =
-        await rootBundle.loadString("assets/files/catalog.json");
+    // final catalogJson =
+    //     await rootBundle.loadString("assets/files/catalog.json");
+    final response = await http.get(Uri.parse(url));
+    final catalogJson = response.body;
     final decodedData = jsonDecode(catalogJson);
     var productsData = decodedData["products"];
     CatalogModel.item = List.from(productsData)
